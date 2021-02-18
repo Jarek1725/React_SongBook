@@ -1,10 +1,11 @@
 import './navbar_style.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Navbar = () =>{
     return  <nav className="navbar">
                 <div className="navbar-container">
                     <div className="navbar-left">
-                        <h1>FirstApp</h1>
+                        <h1>Song<span className={'book-color'}>Book</span></h1>
                     </div>
                     <div className="navbar-center">
                         <a href="">Add Song</a>
@@ -13,7 +14,8 @@ const Navbar = () =>{
                         <a href="">Login</a>
                     </div>
                     <div className="navbar-right">
-                        Tu ma być search
+                        <input type="text" className="searchPanel" placeholder="Search..."/>
+                        <FontAwesomeIcon icon="search" />
                     </div>
                 </div>
             </nav>

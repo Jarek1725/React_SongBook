@@ -1,8 +1,12 @@
 .navbar{
-    background-color: #24252A;
+    background-color: #2F2E41;
     display: flex;
     color:white;
     width: 100%;
+}
+
+.book-color{
+    color: #6C63FF;
 }
 
 .navbar-container{
@@ -20,8 +24,40 @@
 .navbar-left{
     font-size: 21px;
     padding: 15px 0;
+    color: white;
 }
 
 .navbar-center{
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
+
+.navbar-center a{
+    transition: 0.2s;
+}
+
+.navbar-center a:hover{
+    color: #6C63FF;
+}
+
+.navbar-center, .navbar-right{
     margin-top: 24px;
 }
+
+.searchPanel{
+    background: none;
+    border: none;
+    color: white;
+    border-bottom: 1px solid white;
+    transition: 0.2s;
+}
+
+.searchPanel:focus, .searchPanel:hover{
+    border-bottom: 1px solid #6c63ff;
+}
+
+input:focus{
+    outline: none;
+}
+

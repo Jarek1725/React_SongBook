@@ -4,3 +4,9 @@
   margin: 0;
   font-family: 'Montserrat', sans-serif;
 }
+
+.main-content{
+  padding: 40px 20px;
+  max-width: 1440px;
+  margin: auto;
+}

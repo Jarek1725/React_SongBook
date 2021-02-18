@@ -1,0 +1,15 @@
+.not-found-container{
+    width: 1400px;
+    margin: auto;
+    text-align: center;
+}
+
+.image-page-not-found{
+    width: 600px;
+    margin-top: 70px;
+}
+
+.text-page-not-found{
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
