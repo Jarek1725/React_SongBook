@@ -1,0 +1,48 @@
+.home-container{
+    display: flex;
+}
+
+.home-login{
+    width: 50%;
+    text-align: center;
+}
+
+.home-login h2{
+    margin-top: 110px;
+    font-size: 32px;
+}
+
+.login-form-text{
+    background: none;
+    border:none;
+    border-bottom: 1px solid #2F2E41;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-form-class{
+    width: 270px;
+    margin: 30px auto auto;
+}
+
+.submit-login-form{
+    background: #6C63FF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.register-link{
+    margin-top: 30px;
+}
+
+.login-photo{
+    height: 400px;
+    padding: 53px 0;
+}
+
+.ErrorLoginInput{
+    margin-top: 15px;
+    color: #ce2626;
+}
