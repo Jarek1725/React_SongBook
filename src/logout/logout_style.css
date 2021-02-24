@@ -1,0 +1,15 @@
+.logout-container{
+    display: flex;
+}
+
+.Logout-image{
+    height: 400px;
+    width: 50%;
+    padding: 63px 0 63px 50px;
+}
+
+.logout-message{
+    margin-top: 90px;
+    text-align: center;
+    width: 50%;
+}

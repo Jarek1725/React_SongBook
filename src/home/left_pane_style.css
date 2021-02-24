@@ -1,4 +1,7 @@
-.left_container{
-    height: 100%;
-    background-color: red;
+.left-pane-container{
+    overflow-y: scroll;
+}
+
+.left-home-list{
+    list-style-type: none;
 }

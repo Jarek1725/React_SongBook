@@ -1,0 +1,4 @@
+.main-pane-container{
+    overflow-y: scroll;
+    padding: 20px;
+}

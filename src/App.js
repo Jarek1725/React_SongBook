@@ -6,20 +6,34 @@ import Login from './login/Login'
 import Footer from "./footer/Footer";
 import Not_found_404 from "./not_found/Not_found_404";
 import Home from "./home/Home";
+import {useEffect, useState} from "react";
+import Logout from './logout/Logout'
 
 
 function App() {
-  return (
+
+    const[logged, setLogged] = useState('Login')
+
+    useEffect(()=>{
+        if(sessionStorage.getItem('isLogged')==='true'){
+            setLogged('Logout')
+        }
+    }, [])
+
+    return (
       <Router>
         <div className="App">
-          <Navbar />
+          <Navbar logged={logged}/>
           <div className="main-content">
             <Switch>
                 <Route exact path="/">
-                    <Login />
+                    <Login setLogged={setLogged}/>
                 </Route>
                 <Route exact path="/home">
                     <Home />
+                </Route>
+                <Route exact path="/logout">
+                    <Logout />
                 </Route>
                 <Route exact path="*">
                     <Not_found_404 />

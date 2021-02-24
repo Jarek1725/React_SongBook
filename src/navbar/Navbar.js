@@ -1,7 +1,22 @@
 import './navbar_style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-const Navbar = () =>{
+
+const Navbar = ({logged}) =>{
+
+    let history = useHistory();
+
+    function Logout(){
+        history.push("/logout");
+    }
+
+    function Login(){
+        history.push("/");
+    }
+
+
     return  <nav className="navbar">
                 <div className="navbar-container">
                     <div className="navbar-left">
@@ -11,7 +26,9 @@ const Navbar = () =>{
                         <a href="">Add Song</a>
                         <a href="">Most popular songs</a>
                         <a href="">Most popular albums</a>
-                        <a href="">Login</a>
+                        <a href="" onClick={()=>
+                            logged==="Login" ? Login() : Logout()}
+                        >{logged}</a>
                     </div>
                     <div className="navbar-right">
                         <input type="text" className="searchPanel" placeholder="Search..."/>

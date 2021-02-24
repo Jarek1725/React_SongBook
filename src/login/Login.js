@@ -4,13 +4,12 @@ import React, { useState } from "react";
 import {Link} from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setLogged}) => {
 
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
     const[error, setError] = useState(false)
     let history = useHistory()
-
 
     function handleSubmit(e){
         e.preventDefault();
@@ -30,6 +29,8 @@ const Login = () => {
             if(res===false){
                 setError(true)
             } else{
+                sessionStorage.setItem('isLogged', 'true')
+                setLogged('Logout')
                 history.push("/home");
             }
         })
