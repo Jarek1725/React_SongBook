@@ -1,8 +1,10 @@
 import './login_style.css'
 import login_photo from '../components/IconsSvg/login_svg.svg'
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import {gsap} from 'gsap'
+
 
 const Login = ({setLogged}) => {
 
@@ -31,7 +33,11 @@ const Login = ({setLogged}) => {
             } else{
                 sessionStorage.setItem('isLogged', 'true')
                 setLogged('Logout')
-                history.push("/home");
+                gsap.to('.home-container', {autoAlpha:0, duration:0.5})
+
+                setTimeout(()=>{
+                    history.push('/home')
+                }, 500)
             }
         })
     }

@@ -1,0 +1,124 @@
+.bottom-pane-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+    bottom: 0;
+    position: absolute;
+    min-height: 70px;
+    height: 10vh;
+    background-color: #2F2E41;
+}
+
+.bottom-pane-left{
+    color: white;
+    font-size: 16px;
+    padding: 18px 12px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.bottom-pane-left-title{
+    max-width: 300px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    border-bottom: 1px solid transparent;
+}
+.bottom-pane-left-artist{
+    display: flex;
+    font-size: 14px;
+    max-width: 300px;
+    font-weight: 300;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.song_bottom_artist{
+    margin-right: 5px;
+}
+
+.song-heart{
+    margin-left: 20px;
+    color: #d7d7d7;
+}
+
+.bottom-pane-left-title-div{
+    display: flex;
+}
+
+.bottom-pane-center{
+    text-align: center;
+    padding-top: 12px;
+}
+
+.bottom-play-music{
+    background: none;
+    border: 2px solid #d7d7d7;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: #eaeaea;
+    cursor:pointer;
+    outline: none;
+}
+
+.bottom-play-music:hover{
+    transform: scale(1.02);
+    color: white;
+    border:2px solid white
+}
+
+.bottom-play-forward, .bottom-play-backward{
+    background: none;
+    border:none;
+    color: #d7d7d7;
+    width: 35px;
+    height: 35px;
+    outline: none;
+    cursor: pointer;
+}
+
+.bottom-play-backward:hover, .bottom-play-forward:hover{
+    color: white;
+}
+
+.bottom-pane-right{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 26px 10px;
+    margin-right: 15px;
+}
+
+.follow_congratulate_bottom:hover, .song_bottom_artist:hover, .bottom-pane-left-title:hover{
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+
+#load_position{
+    width: 90%;
+    padding: 0;
+}
+
+#load_position {
+    height: 4px;
+    border-radius: 3px;
+    background: #d4d4d4;
+}
+#load_position::-moz-progress-bar
+{
+    background: #6C63FF;
+    border-radius: 3px;
+}
+#load_position::-webkit-progress-bar
+{
+    background: transparent;
+    border-radius: 3px;
+}
+#load_position::-webkit-progress-value
+{
+    background: #6C63FF;
+    border-radius: 3px;
+}

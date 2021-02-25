@@ -1,7 +1,37 @@
 .left-pane-container{
-    overflow-y: scroll;
+    text-align: left;
 }
 
 .left-home-list{
     list-style-type: none;
+    text-align: left;
+}
+
+.left-home-list-element{
+    padding: 8px 0;
+    border-left: 5px solid white;
+}
+
+.left-home-list-element a{
+    padding-left: 12px;
+    color: #2d2d2d;
+    text-decoration: none;
+}
+
+.active-list-left-pane{
+    border-left: 5px solid #6c63ff;
+}
+
+.libraries_list_left_pane{
+    height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+    list-style-type: none;
+    padding-left: 17px;
+}
+
+.text-above-list-left-pane{
+    margin-top: 10px;
+    text-align: left;
+    padding-left: 17px;
 }

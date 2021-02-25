@@ -6,7 +6,7 @@ import Login from './login/Login'
 import Footer from "./footer/Footer";
 import Not_found_404 from "./not_found/Not_found_404";
 import Home from "./home/Home";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Logout from './logout/Logout'
 
 
@@ -29,18 +29,24 @@ function App() {
                 <Route exact path="/">
                     <Login setLogged={setLogged}/>
                 </Route>
-                <Route exact path="/home">
-                    <Home />
+                <Route exact path="/login">
+                    <Login setLogged={setLogged}/>
+                    <Footer />
                 </Route>
                 <Route exact path="/logout">
                     <Logout />
                 </Route>
+                <Route path="/home">
+                    <Home />
+                </Route>
                 <Route exact path="*">
                     <Not_found_404 />
                 </Route>
+                <Route exact path='/home/*'>
+                    <Not_found_404/>
+                </Route>
             </Switch>
           </div>
-          <Footer />
         </div>
       </Router>
   );

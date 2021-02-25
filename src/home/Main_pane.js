@@ -2,9 +2,9 @@ import './main_pane_style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from "react";
 
-const Main_pane = () =>{
+const Main_pane = ({setPageLoad}) =>{
 
-    return  <div className="main-pane-container">
+    return  <div className="main-pane-container" onLoad={()=>setPageLoad('true')}>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum ligula in hendrerit laoreet. Integer urna arcu, convallis ut auctor viverra, finibus et orci. Vestibulum tincidunt ligula ut nulla euismod lacinia. Curabitur imperdiet massa nec semper euismod. Mauris ut arcu mattis, gravida arcu vel, porttitor quam. Curabitur porttitor id nulla sed sollicitudin. Suspendisse feugiat diam euismod fringilla mollis. Proin pharetra, libero nec dignissim scelerisque, elit risus laoreet velit, sit amet elementum risus nisi gravida erat. Aliquam dictum condimentum odio, vel varius sem facilisis vitae. Cras a nisl et ante mollis rhoncus vitae porttitor magna. Phasellus rhoncus vel velit id feugiat. Curabitur vitae sem hendrerit, vulputate lacus ut, ornare nunc. Vivamus pulvinar rutrum sapien, vel dictum libero posuere ac.
 

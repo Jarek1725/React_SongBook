@@ -1,6 +1,6 @@
 import './navbar_style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 
 
@@ -13,9 +13,8 @@ const Navbar = ({logged}) =>{
     }
 
     function Login(){
-        history.push("/");
+        history.push("/login");
     }
-
 
     return  <nav className="navbar">
                 <div className="navbar-container">

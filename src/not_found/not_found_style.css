@@ -1,5 +1,5 @@
 .not-found-container{
-    width: 1400px;
+    max-width: 600px;
     margin: auto;
     text-align: center;
 }
