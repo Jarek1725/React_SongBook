@@ -8,13 +8,22 @@ const Bottom_music_player = (props) =>{
 
     function onClickHandle(){
         props.nextSong()
-        // props.setDuration(document.getElementById('music_audio').duration)
     }
     function onClickHandle2(){
         // props.handleSetDuration()
         props.setDuration(document.getElementById('music_audio').duration)
         props.setIsPlaying(!props.isPlaying)
     }
+
+    useEffect(()=>{
+        let howManyArtist = props.music.songAuthor.length
+        document.getElementById('bottom-pane-left-artist').innerHTML = ""
+        for(let i=0;i<howManyArtist;i++){
+            document.getElementById('bottom-pane-left-artist').innerHTML += "<p className='song_bottom_artist'>"+props.music.songAuthor[i].pseudonym+", </p>"
+        }
+
+        document.getElementById('bottom-pane-left-artist').innerHTML = document.getElementById('bottom-pane-left-artist').innerText.slice(0, -1)
+    }, [props.music])
 
     useEffect(()=>{
         let scrollPos = document.getElementById('load_position');
@@ -31,10 +40,11 @@ const Bottom_music_player = (props) =>{
     }, [])
 
     return  <div className="bottom-pane-container" >
-                <audio id='music_audio' src={props.music} ref={props.audioEl} />
+                    <audio id='music_audio' src={props.music.songSource} ref={props.audioEl} ></audio>
                 <div className="bottom-pane-left">
-                    <div className='bottom-pane-left-title-div'><p className='bottom-pane-left-title'>Nie mam czasu</p><FontAwesomeIcon icon={faHeart} className='song-heart'/></div>
-                    <div className='bottom-pane-left-artist'><p className='song_bottom_artist'>Taco Hemingway, </p><p className='song_bottom_artist'>CatchUp</p></div>
+                    <div className='bottom-pane-left-title-div'><p className='bottom-pane-left-title'>{props.music.songTitle}</p><FontAwesomeIcon icon={faHeart} className='song-heart'/></div>
+                    <div id='bottom-pane-left-artist' className='bottom-pane-left-artist'>
+                    </div>
                 </div>
                 <div className="bottom-pane-center">
                     <div className="bottom-icon-container">
