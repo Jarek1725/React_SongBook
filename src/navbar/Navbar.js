@@ -4,11 +4,24 @@ import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 
 
-const Navbar = ({logged}) =>{
+const Navbar = ({logged, audioEl, music}) =>{
 
     let history = useHistory();
 
     function Logout(){
+
+        if(!audioEl.current.currentTime > 0 ){
+            audioEl.current.currentTime = 1
+        }
+
+        fetch('http://localhost:8080/server_war_exploded/setLastUserListenedServlet?songId='+music.songId+'&songTime='+audioEl.current.currentTime, {
+            method:'POST',
+            credentials:'include'
+        })
+            .then((res)=>{
+                console.log(res)
+            })
+
         history.push("/logout");
     }
 

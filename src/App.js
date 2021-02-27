@@ -14,18 +14,29 @@ function App() {
 
     const[logged, setLogged] = useState('Login')
 
+    const [music, setMusic] = useState({
+        albumName:'',
+        albumPhoto:'',
+        songAuthor:'',
+        songId:'',
+        songIndexInAlbum:'',
+        songSource:'',
+        songTitle:'',
+        songAlbumId:''
+    })
+
     useEffect(()=>{
         if(sessionStorage.getItem('isLogged')==='true'){
             setLogged('Logout')
         }
     }, [])
 
-    const audioEl = useRef(null)
+    const audioEl = useRef('0')
 
     return (
       <Router>
         <div className="App">
-          <Navbar logged={logged}/>
+          <Navbar logged={logged} audioEl={audioEl} music={music}/>
           <div className="main-content">
             <Switch>
                 <Route exact path="/">
@@ -33,13 +44,12 @@ function App() {
                 </Route>
                 <Route exact path="/login">
                     <Login setLogged={setLogged}/>
-                    <Footer />
                 </Route>
                 <Route exact path="/logout">
                     <Logout />
                 </Route>
                 <Route path="/home">
-                    <Home audioEl={audioEl}/>
+                    <Home audioEl={audioEl} logged={logged} music={music} setMusic={setMusic}/>
                 </Route>
                 <Route exact path="*">
                     <Not_found_404 />

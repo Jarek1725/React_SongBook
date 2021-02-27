@@ -1,5 +1,7 @@
 .home-container{
     display: flex;
+    margin-top: 85px;
+    width: 100%;
 }
 
 .home-login{
@@ -39,6 +41,7 @@
 
 .login-photo{
     height: 400px;
+    width: 50%;
     padding: 53px 0;
 }
 

@@ -12,7 +12,7 @@
 .bottom-pane-left{
     color: white;
     font-size: 16px;
-    padding: 18px 12px;
+    padding: 18px 25px;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
@@ -40,8 +40,9 @@
 }
 
 .song-heart{
+
     margin-left: 20px;
-    color: #d7d7d7;
+    color: #6c63ff;
 }
 
 .bottom-pane-left-title-div{
@@ -98,8 +99,8 @@
 }
 
 #load_position{
-    width: 90%;
-    vertical-align: 0.1em;
+    width: 100%;
+    margin-top: 9px;
 }
 
 #load_position {
@@ -124,4 +125,19 @@
 {
     background: #6C63FF;
     border-radius: 3px;
+}
+
+.blank{
+    display: none;
+}
+
+.bottom-track_position-center{
+    color:white;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+}
+
+.track-timers{
+    margin-top: 4px;
+    font-size: 12px;
 }

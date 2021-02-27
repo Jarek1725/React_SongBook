@@ -1,29 +1,95 @@
 import './bottom_music_player_style.css'
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHeart} from "@fortawesome/free-regular-svg-icons/faHeart";
-import {faBackward, faForward, faPause, faPlay, faStepBackward, faStepForward} from "@fortawesome/free-solid-svg-icons";
+import {
+    faBackward,
+    faForward, faInfinity,
+    faPause,
+    faPlay,
+    faRandom,
+    faStepBackward,
+    faStepForward
+} from "@fortawesome/free-solid-svg-icons";
+import {gsap} from "gsap";
 
 const Bottom_music_player = (props) =>{
 
-    function onClickHandle(){
-        props.nextSong()
+    function onClickHandle(isNext){
+        props.nextSong(isNext)
     }
     function onClickHandle2(){
-        // props.handleSetDuration()
         props.setDuration(document.getElementById('music_audio').duration)
         props.setIsPlaying(!props.isPlaying)
     }
 
     useEffect(()=>{
-        let howManyArtist = props.music.songAuthor.length
-        document.getElementById('bottom-pane-left-artist').innerHTML = ""
-        for(let i=0;i<howManyArtist;i++){
-            document.getElementById('bottom-pane-left-artist').innerHTML += "<p className='song_bottom_artist'>"+props.music.songAuthor[i].pseudonym+", </p>"
+        if(props.audioEl.current.duration!=null){
+            let durationTimeInSeconds = Math.round(props.audioEl.current.duration)
+            let minutes = Math.floor(durationTimeInSeconds/60)
+            let seconds = Math.round(durationTimeInSeconds-minutes*60)
+
+            if(!isNaN(seconds)){
+                if(seconds<10){
+                    seconds = '0'+seconds
+                }
+                document.getElementById('track-time-duration').innerText=`${minutes}:${seconds}`
+            }
         }
 
-        document.getElementById('bottom-pane-left-artist').innerHTML = document.getElementById('bottom-pane-left-artist').innerText.slice(0, -1)
+    },[props.audioEl.current.duration])
+
+
+    function setMusicTimeBottomPane(){
+        if(props.audioEl.current.duration!=null){
+            let durationTimeInSeconds = Math.round(props.audioEl.current.currentTime)
+            let minutes = Math.floor(durationTimeInSeconds/60)
+            let seconds = Math.round(durationTimeInSeconds-minutes*60)
+
+            if(!isNaN(seconds)){
+                if(seconds<10){
+                    seconds = '0'+seconds
+                }
+                document.getElementById('track-time-expired').innerText=`${minutes}:${seconds}`
+
+                if(document.getElementById('load_position').value=='100'){
+                    document.getElementById('bottom-play-forward').click()
+                }
+                setTimeout(setMusicTimeBottomPane, 1000);
+            }
+        }
+    }
+
+
+    useEffect(()=>{
+
+    })
+
+
+
+    useEffect(()=>{
+    }, [props.infiniteSong])
+
+    useEffect(()=>{
+        setMusicTimeBottomPane()
+    }, [])
+
+    useEffect(()=>{
+        let howManyArtist = props.music.songAuthor.length
+        document.getElementById('bottom-pane-left-artist').innerHTML = ""
+        console.log(props.music.songAuthor)
+        for(let i=0;i<howManyArtist;i++){
+            if(i===howManyArtist-1){
+                document.getElementById('bottom-pane-left-artist').innerHTML += "<p class='song_bottom_artist'>"+props.music.songAuthor[i].pseudonym+"</p>"
+            }else{
+                document.getElementById('bottom-pane-left-artist').innerHTML += "<p class='song_bottom_artist'>"+props.music.songAuthor[i].pseudonym+", </p>"
+            }
+        }
     }, [props.music])
+
+    function setIconColorClick(){
+
+    }
 
     useEffect(()=>{
         let scrollPos = document.getElementById('load_position');
@@ -40,7 +106,7 @@ const Bottom_music_player = (props) =>{
     }, [])
 
     return  <div className="bottom-pane-container" >
-                    <audio id='music_audio' src={props.music.songSource} ref={props.audioEl} ></audio>
+                <audio id='music_audio' src={props.music.songSource} ref={props.audioEl} ></audio>
                 <div className="bottom-pane-left">
                     <div className='bottom-pane-left-title-div'><p className='bottom-pane-left-title'>{props.music.songTitle}</p><FontAwesomeIcon icon={faHeart} className='song-heart'/></div>
                     <div id='bottom-pane-left-artist' className='bottom-pane-left-artist'>
@@ -48,18 +114,24 @@ const Bottom_music_player = (props) =>{
                 </div>
                 <div className="bottom-pane-center">
                     <div className="bottom-icon-container">
-                        <button className="bottom-play-backward">
+                        <button id='bottom-play-infinite' style={{color : props.infiniteSong ? "#6c63ff" : "white"}} onClick={()=>props.setInfiniteSong(!props.infiniteSong)} className="bottom-play-backward">
+                            <FontAwesomeIcon icon={faInfinity} />
+                        </button>
+                        <button className="bottom-play-backward" onClick={()=>onClickHandle('previous')}>
                             <FontAwesomeIcon icon={faBackward} />
                         </button>
                         <button className="bottom-play-music" onClick={()=>onClickHandle2()}>
                             <FontAwesomeIcon icon={props.isPlaying ? faPause : faPlay} />
                         </button>
-                        <button className="bottom-play-forward" onClick={()=>onClickHandle()}>
+                        <button id='bottom-play-forward' className="bottom-play-forward" onClick={()=>onClickHandle('next')}>
                             <FontAwesomeIcon icon={faForward} />
+                        </button>
+                        <button id='bottom-play-random' style={{color : props.randomSongs ? "#6c63ff" : "white"}} onClick={()=>props.setRandomSongs(!props.randomSongs)} className="bottom-play-forward">
+                            <FontAwesomeIcon icon={faRandom} />
                         </button>
                     </div>
                     <div className="bottom-track_position-center">
-                        <progress id="load_position" ref={props.progressMusicBar} value="0" max="100"/>
+                        <p id='track-time-expired' className='track-timers'>2:22</p> <progress  id="load_position" ref={props.progressMusicBar} value="0" max="100"/> <p id='track-time-duration' className='track-timers'>3:16</p>
                     </div>
                 </div>
                 <div className="bottom-pane-right">
