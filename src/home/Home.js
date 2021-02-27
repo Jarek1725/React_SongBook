@@ -10,6 +10,7 @@ import User_pane from "./User_pane";
 import Browse from "./Browse";
 import Bottom_music_player from "./Bottom_music_player";
 import Right_pane from "./Right_pane";
+import HomeStartPage from "./HomeStartPage";
 
 
 const Home = ({audioEl, logged, music, setMusic}) =>{
@@ -23,8 +24,8 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
 
 
     useEffect(()=>{
-        gsap.from('.Home-container', {height:506, opacity:0})
-        gsap.from('.bottom-pane-container', {top:"110%", duration:1})
+        gsap.to('.Home-container', {opacity:1, duration:1})
+        gsap.from('.bottom-pane-container', {top:"110%", duration:2})
 
         if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
             console.info( "This page is reloaded" );
@@ -54,7 +55,8 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
     }, [])
 
     function setMainPaneHeight(){
-        setWindowHeightMain(window.screen.height - 284)
+        // setWindowHeightMain(window.screen.height - 252)
+        setWindowHeightMain(window.screen.height - document.getElementById('bottom-pane-left').style.height)
         document.getElementById('Home-container').style.height = windowHeightMain+'px'
     }
 
@@ -85,7 +87,7 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
 
     function yourFunction(){
         sessionStorage.setItem('music_time', audioEl.current.currentTime)
-        setTimeout(yourFunction, 7000);
+        setTimeout(yourFunction, 1000);
     }
 
     function test123(){
@@ -97,14 +99,14 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
         })
     }
 
-    const nextSong=(isNext)=>{
-        fetch('http://localhost:8080/server_war_exploded/nextSongServlet?next='+isNext+'&songId='+music.songIndexInAlbum+'&albumId='+music.songAlbumId, {
+    const nextSong=(isNext, isRandom)=>{
+        fetch('http://localhost:8080/server_war_exploded/nextSongServlet?next='+isNext+'&songId='+music.songIndexInAlbum+'&albumId='+music.songAlbumId+'&isRandom='+isRandom, {
             credentials:'include'
         })
             .then((res)=>{
             return res.json()
-        }).then(data=>{
-            console.log(data)
+        })
+            .then(data=>{
             setMusicFromFetch(data.songId)
         })
     }
@@ -120,7 +122,7 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
             sessionStorage.setItem('active_music', data.songId)
             setMusic({
                 albumName: data.albumName,
-                albumPhoto: data.albumPhoto,
+                albumPhoto: '/photos/'+data.albumPhoto,
                 songAuthor: data.songAutor,
                 songId: data.songId,
                 songIndexInAlbum: data.songIndexInAlbum,
@@ -137,8 +139,11 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
     return (
         <div >
             <div id='Home-container' className="Home-container" onClick={()=>setPageLoad('true')}>
-                <Left_pane/>
+                <Left_pane music={music}/>
                 <Switch>
+                    <Route exact path='/home/start'>
+                        <HomeStartPage/>
+                    </Route>
                     <Route exact path='/home/'>
                         <Main_pane setPageLoad={setPageLoad}/>
                     </Route>

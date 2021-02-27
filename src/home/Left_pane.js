@@ -5,7 +5,7 @@ import {faBook, faHome, faUser} from "@fortawesome/free-solid-svg-icons";
 import {gsap} from 'gsap'
 import {Link} from "react-router-dom";
 
-const Left_pane = () =>{
+const Left_pane = (props) =>{
 
     function handleLinkClick(e){
         document.querySelectorAll('.left-home-list-element').forEach(function (elem){
@@ -23,6 +23,7 @@ const Left_pane = () =>{
                 <p className='text-above-list-left-pane'>Your library</p>
                 <ul className='libraries_list_left_pane'>
                 </ul>
+                <img src={props.music.albumPhoto} className="album_cover_left_pane" alt="album cover"/>
             </div>
 
 }

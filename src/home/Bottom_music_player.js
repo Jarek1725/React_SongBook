@@ -16,7 +16,16 @@ import {gsap} from "gsap";
 const Bottom_music_player = (props) =>{
 
     function onClickHandle(isNext){
-        props.nextSong(isNext)
+        if(document.getElementById('bottom-play-infinite').style.color !== 'white'){
+            props.audioEl.current.currentTime = 0
+            props.audioEl.current.play()
+        }
+        else if(document.getElementById('bottom-play-random').style.color==='white'){
+            props.nextSong(isNext, 'false')
+        }
+        else{
+            props.nextSong(isNext, 'true')
+        }
     }
     function onClickHandle2(){
         props.setDuration(document.getElementById('music_audio').duration)
@@ -51,8 +60,7 @@ const Bottom_music_player = (props) =>{
                     seconds = '0'+seconds
                 }
                 document.getElementById('track-time-expired').innerText=`${minutes}:${seconds}`
-
-                if(document.getElementById('load_position').value=='100'){
+                if((props.progressMusicBar.current.value)===100){
                     document.getElementById('bottom-play-forward').click()
                 }
                 setTimeout(setMusicTimeBottomPane, 1000);
@@ -60,10 +68,20 @@ const Bottom_music_player = (props) =>{
         }
     }
 
-
-    useEffect(()=>{
-
-    })
+    //
+    // useEffect(()=>{
+    //     const interval = setInterval(()=>{
+    //         console.log(document.getElementById('bottom-play-infinite').style.color)
+    //         if((props.progressMusicBar.current.value)===100){
+    //             if(document.getElementById('bottom-play-infinite').style.color !== 'white'){
+    //                 props.audioEl.current.currentTime = 0
+    //                 props.audioEl.current.play()
+    //             }else{
+    //             }
+    //         }
+    //     }, 1000)
+    //     return()=>clearInterval(interval)
+    // }, [])
 
 
 
@@ -87,9 +105,6 @@ const Bottom_music_player = (props) =>{
         }
     }, [props.music])
 
-    function setIconColorClick(){
-
-    }
 
     useEffect(()=>{
         let scrollPos = document.getElementById('load_position');
@@ -105,9 +120,9 @@ const Bottom_music_player = (props) =>{
         })
     }, [])
 
-    return  <div className="bottom-pane-container" >
+    return  <div className="bottom-pane-container" id="bottom-pane-left">
                 <audio id='music_audio' src={props.music.songSource} ref={props.audioEl} ></audio>
-                <div className="bottom-pane-left">
+                <div className="bottom-pane-left" >
                     <div className='bottom-pane-left-title-div'><p className='bottom-pane-left-title'>{props.music.songTitle}</p><FontAwesomeIcon icon={faHeart} className='song-heart'/></div>
                     <div id='bottom-pane-left-artist' className='bottom-pane-left-artist'>
                     </div>

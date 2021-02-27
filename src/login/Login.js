@@ -36,7 +36,7 @@ const Login = ({setLogged}) => {
                 gsap.to('.home-container', {autoAlpha:0, duration:0.5})
 
                 setTimeout(()=>{
-                    history.push('/home')
+                    history.push('/home/start')
                 }, 500)
             }
         })
