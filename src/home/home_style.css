@@ -1,6 +1,10 @@
 .Home-container{
     display: grid;
-    grid-template-columns: 1fr 6fr 2fr;
+    grid-template-columns: 1fr 8fr 2fr;
     overflow: hidden;
     opacity: 0;
+}
+
+.header-text{
+
 }

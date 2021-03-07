@@ -11,21 +11,21 @@ import Browse from "./Browse";
 import Bottom_music_player from "./Bottom_music_player";
 import Right_pane from "./Right_pane";
 import HomeStartPage from "./HomeStartPage";
+import SearchSite from "./SearchSite";
+import SearchPane from "../navbar/SearchPane";
 
 
-const Home = ({audioEl, logged, music, setMusic}) =>{
+const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =>{
 
     let history = useHistory()
-
     const[windowHeightMain, setWindowHeightMain] = useState()
     const [pageLoad, setPageLoad] = useState('false')
 
 
-
-
     useEffect(()=>{
-        gsap.to('.Home-container', {opacity:1, duration:1})
-        gsap.from('.bottom-pane-container', {top:"110%", duration:2})
+        gsap.to('.Home-container', {opacity:1, duration:0})
+        gsap.from('.bottom-pane-container', {top:"110%", duration:1.5})
+        gsap.to('.bottom-pane-container', {opacity:1, duration:0})
 
         if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
             console.info( "This page is reloaded" );
@@ -55,8 +55,7 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
     }, [])
 
     function setMainPaneHeight(){
-        // setWindowHeightMain(window.screen.height - 252)
-        setWindowHeightMain(window.screen.height - document.getElementById('bottom-pane-left').style.height)
+        setWindowHeightMain(window.screen.height - 277)
         document.getElementById('Home-container').style.height = windowHeightMain+'px'
     }
 
@@ -152,6 +151,9 @@ const Home = ({audioEl, logged, music, setMusic}) =>{
                     </Route>
                     <Route exact path='/home/user'>
                         <User_pane/>
+                    </Route>
+                    <Route path="/home/search/">
+                        <SearchSite searchValue={searchValue} setSearchValue={setSearchValue} setMusicFromFetch={setMusicFromFetch}/>
                     </Route>
                     <Route exact path="*">
                         <Not_found_404/>

@@ -23,21 +23,27 @@
 }
 
 .libraries_list_left_pane{
-    height: 269px;
+    height: 262px;
     overflow: hidden;
     overflow-y: scroll;
     list-style-type: none;
-    padding-left: 17px;
+    width: 170px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 8px 0 0;
 }
 
 .text-above-list-left-pane{
+    font-weight: 500;
     margin-top: 10px;
     text-align: left;
     padding-left: 17px;
 }
 
 .album_cover_left_pane{
+    position: absolute;
+    bottom:10vh;
+    left: 0;
     max-width: 170px;
     max-height: 170px;
-    margin-top: 2px;
 }

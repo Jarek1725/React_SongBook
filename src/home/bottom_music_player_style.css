@@ -5,6 +5,7 @@
     bottom: 0;
     position: absolute;
     min-height: 70px;
+    opacity: 0;
     height: 10vh;
     background-color: #2F2E41;
 }

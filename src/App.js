@@ -13,6 +13,7 @@ import Logout from './logout/Logout'
 function App() {
 
     const[logged, setLogged] = useState('Login')
+    const[searchValue, setSearchValue] = useState('')
 
     const [music, setMusic] = useState({
         albumName:'',
@@ -36,7 +37,7 @@ function App() {
     return (
       <Router>
         <div className="App">
-          <Navbar logged={logged} audioEl={audioEl} music={music}/>
+          <Navbar logged={logged} audioEl={audioEl} music={music} searchValue={searchValue} setSearchValue={setSearchValue}/>
           <div className="main-content">
             <Switch>
                 <Route exact path="/">
@@ -49,7 +50,7 @@ function App() {
                     <Logout />
                 </Route>
                 <Route path="/home">
-                    <Home audioEl={audioEl} logged={logged} music={music} setMusic={setMusic}/>
+                    <Home audioEl={audioEl} logged={logged} music={music} setMusic={setMusic} searchValue={searchValue} setSearchValue={setSearchValue}/>
                 </Route>
                 <Route exact path="*">
                     <Not_found_404 />
@@ -58,6 +59,7 @@ function App() {
                     <Not_found_404/>
                 </Route>
             </Switch>
+              {searchValue}
           </div>
         </div>
       </Router>

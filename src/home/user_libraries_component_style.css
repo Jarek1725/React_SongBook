@@ -1,0 +1,14 @@
+.user-libraries-list-element{
+    padding: 3px 7px;
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: 0.3s;
+}
+
+.user-libraries-list-element:hover{
+    background-color: #ececec;
+    cursor: pointer;
+}

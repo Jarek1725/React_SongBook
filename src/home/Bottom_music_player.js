@@ -8,10 +8,7 @@ import {
     faPause,
     faPlay,
     faRandom,
-    faStepBackward,
-    faStepForward
 } from "@fortawesome/free-solid-svg-icons";
-import {gsap} from "gsap";
 
 const Bottom_music_player = (props) =>{
 
@@ -84,9 +81,6 @@ const Bottom_music_player = (props) =>{
     // }, [])
 
 
-
-    useEffect(()=>{
-    }, [props.infiniteSong])
 
     useEffect(()=>{
         setMusicTimeBottomPane()

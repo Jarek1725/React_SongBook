@@ -2,9 +2,10 @@ import './navbar_style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
+import SearchPane from "./SearchPane";
 
 
-const Navbar = ({logged, audioEl, music}) =>{
+const Navbar = ({logged, audioEl, music, searchValue, setSearchValue}) =>{
 
     let history = useHistory();
 
@@ -42,10 +43,7 @@ const Navbar = ({logged, audioEl, music}) =>{
                             logged==="Login" ? Login() : Logout()}
                         >{logged}</a>
                     </div>
-                    <div className="navbar-right">
-                        <input type="text" className="searchPanel" placeholder="Search..."/>
-                        <FontAwesomeIcon icon="search" />
-                    </div>
+                    <SearchPane searchValue={searchValue} setSearchValue={setSearchValue}/>
                 </div>
             </nav>
 }
