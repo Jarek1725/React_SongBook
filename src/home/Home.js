@@ -13,6 +13,7 @@ import Right_pane from "./Right_pane";
 import HomeStartPage from "./HomeStartPage";
 import SearchSite from "./SearchSite";
 import SearchPane from "../navbar/SearchPane";
+import AlbumSite from "./AlbumSite";
 
 
 const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =>{
@@ -55,7 +56,7 @@ const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =
     }, [])
 
     function setMainPaneHeight(){
-        setWindowHeightMain(window.screen.height - 277)
+        setWindowHeightMain(window.screen.height - 252)
         document.getElementById('Home-container').style.height = windowHeightMain+'px'
     }
 
@@ -150,7 +151,10 @@ const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =
                         <Browse/>
                     </Route>
                     <Route exact path='/home/user'>
-                        <User_pane/>
+                        <User_pane />
+                    </Route>
+                    <Route path='/home/album/:id'>
+                        <AlbumSite />
                     </Route>
                     <Route path="/home/search/">
                         <SearchSite searchValue={searchValue} setSearchValue={setSearchValue} setMusicFromFetch={setMusicFromFetch}/>

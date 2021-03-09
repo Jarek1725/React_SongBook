@@ -1,11 +1,13 @@
 .search-container{
     padding: 20px;
+    overflow-y: scroll;
 }
 
 .search-panels{
     width: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-bottom: 30px;
 }
 
 .search_items{
@@ -17,6 +19,12 @@
 .album_cover_search_pane{
     max-width: 55px;
     max-height: 55px;
+}
+
+.album_album_cover_search_pane{
+    max-width: 55px;
+    max-height: 55px;
+    border-radius: 8px;
 }
 
 .search-song-item{
@@ -50,7 +58,7 @@
 }
 
 .artist_search_name{
-    margin-top: 17px;
+    margin-top: 19px;
     margin-left: 5px;
 }
 
@@ -109,4 +117,28 @@
 .search-artist{
     display: flex;
     margin: 8px;
+}
+
+.search-playlist-item{
+    padding-top: 5px;
+    text-align: center;
+}
+
+a{
+    color: #323232;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover{
+    color: #6c63ff;
+}
+
+.search-not-found{
+    height: 140px;
+}
+
+.search-not-found-container{
+    margin: 25px 0 15px;
+    text-align: center;
 }
