@@ -154,7 +154,10 @@ const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =
                         <User_pane />
                     </Route>
                     <Route path='/home/album/:id'>
-                        <AlbumSite />
+                        <AlbumSite setMusic={setMusic} music={music}/>
+                    </Route>
+                    <Route path='/home/album/:id/:songId'>
+                        <AlbumSite setMusic={setMusic} music={music}/>
                     </Route>
                     <Route path="/home/search/">
                         <SearchSite searchValue={searchValue} setSearchValue={setSearchValue} setMusicFromFetch={setMusicFromFetch}/>

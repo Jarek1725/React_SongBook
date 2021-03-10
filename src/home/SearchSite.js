@@ -81,9 +81,6 @@ const SearchSite = (props) =>{
                                                         <SearchItemListAlbums actualList={searchAlbums} setMusicFromFetch={props.setMusicFromFetch}/>
                                                     </div>}
                         {searchAlbums.length===0 && <div className="search-not-found-container"><img src={notFoundAlbum} className="search-not-found"  alt=""/> <p>Not found any artist</p></div>}
-                        <div className="search_items">
-                            <SearchItemListAlbums actualList={searchAlbums} setMusicFromFetch={props.setMusicFromFetch}/>
-                        </div>
                     </div>
                     <div className="search_songs">
                         <div className="search_title_view_more">
