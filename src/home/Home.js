@@ -14,6 +14,8 @@ import HomeStartPage from "./HomeStartPage";
 import SearchSite from "./SearchSite";
 import SearchPane from "../navbar/SearchPane";
 import AlbumSite from "./AlbumSite";
+import ArtistSite from "./ArtistSite";
+import PlaylistSite from "./PlaylistSite";
 
 
 const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =>{
@@ -52,6 +54,15 @@ const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =
             })
 
             yourFunction();
+
+            fetch('http://localhost:8080/server_war_exploded/getUserId', {
+                method:'POST',
+                credentials:'include'
+            }).then((res)=>{
+                return res.json()
+            }).then(data=>{
+                sessionStorage.setItem("userId", data)
+            })
         }
     }, [])
 
@@ -153,11 +164,17 @@ const Home = ({audioEl, logged, music, setMusic, searchValue, setSearchValue}) =
                     <Route exact path='/home/user'>
                         <User_pane />
                     </Route>
+                    <Route path='/home/album/:id/:songId'>
+                        <AlbumSite setMusic={setMusic} music={music}/>
+                    </Route>
                     <Route path='/home/album/:id'>
                         <AlbumSite setMusic={setMusic} music={music}/>
                     </Route>
-                    <Route path='/home/album/:id/:songId'>
-                        <AlbumSite setMusic={setMusic} music={music}/>
+                    <Route path='/home/artist/:id'>
+                        <ArtistSite setMusic={setMusic} music={music}/>
+                    </Route>
+                    <Route path='/home/playlist/:id'>
+                        <PlaylistSite setMusic={setMusic} music={music}/>
                     </Route>
                     <Route path="/home/search/">
                         <SearchSite searchValue={searchValue} setSearchValue={setSearchValue} setMusicFromFetch={setMusicFromFetch}/>

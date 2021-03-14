@@ -9,6 +9,7 @@ import {
     faPlay,
     faRandom,
 } from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 const Bottom_music_player = (props) =>{
 
@@ -117,7 +118,7 @@ const Bottom_music_player = (props) =>{
     return  <div className="bottom-pane-container" id="bottom-pane-left">
                 <audio id='music_audio' src={props.music.songSource} ref={props.audioEl} ></audio>
                 <div className="bottom-pane-left" >
-                    <div className='bottom-pane-left-title-div'><p className='bottom-pane-left-title'>{props.music.songTitle}</p><FontAwesomeIcon icon={faHeart} className='song-heart'/></div>
+                    <div className='bottom-pane-left-title-div'><Link to={'/home/album/'+props.music.songAlbumId+'/'+props.music.songId}><p className='bottom-pane-left-title'>{props.music.songTitle}</p></Link><FontAwesomeIcon icon={faHeart} className='song-heart'/></div>
                     <div id='bottom-pane-left-artist' className='bottom-pane-left-artist'>
                     </div>
                 </div>

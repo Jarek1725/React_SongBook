@@ -9,7 +9,7 @@ const AlbumSite = (props) =>{
     const[currentAlbum, setCurrentAlbum] = useState('');
     const[albumLoaded, setAlbumLoaded] = useState(false);
 
-    const { id, songId } = useParams();
+    let { id, songId } = useParams();
 
     console.log(id, songId)
 
@@ -40,7 +40,7 @@ const AlbumSite = (props) =>{
                                     </div>
                                 </Parallax>
                 }
-                {albumLoaded && <AlbumSongList currentAlbum={currentAlbum} setMusic={props.setMusic} music={props.music}/>}
+                {albumLoaded && <AlbumSongList currentAlbum={currentAlbum} setMusic={props.setMusic} music={props.music} songId={songId} isFromAlbum={true}/>}
             </div>
 }
 

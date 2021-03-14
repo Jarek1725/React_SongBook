@@ -1,6 +1,7 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 const SearchItemLists = (props) =>{
 
@@ -17,7 +18,7 @@ const SearchItemLists = (props) =>{
                     {/*<p id={"song_to_start_"+item.songId} onClick={()=>handleNewSong(item.songId)} className="image_start_play"><FontAwesomeIcon icon={faPlay} /></p>*/}
                 </div>
                 <div className="search-song-title">
-                    <div className="artist_search_name"><b>{item.albumName}</b></div>
+                    <div className="artist_search_name"><b><Link to={'/home/album/'+item.albumId}>{item.albumName}</Link></b></div>
                 </div>
             </div>
         ))

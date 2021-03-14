@@ -21,6 +21,7 @@
 
 .bottom-pane-left-title{
     max-width: 300px;
+    color: white;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
@@ -47,6 +48,7 @@
 }
 
 .bottom-pane-left-title-div{
+    color: white;
     display: flex;
 }
 

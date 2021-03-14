@@ -16,9 +16,9 @@ const SearchItemLists = (props) =>{
                         <p id={"song_to_start_"+item.songId} onClick={()=>handleNewSong(item.songId)} className="image_start_play"><FontAwesomeIcon icon={faPlay} /></p>
                     </div>
                     <div className="search-song-title">
-                        <div className="song_title_search"><b><Link to={'/home/album/'+item.songAlbum}>{item.songTitle}</Link></b></div>
-                        <div className="song_artists_search">{item.songAutor.map(item=>(
-                            item.pseudonym+", "
+                        <div className="song_title_search"><b><Link to={'/home/album/'+item.songAlbum+"/"+item.songId}>{item.songTitle}</Link></b></div>
+                        <div className="song_artists_search">{item.songAutor.map(artist=>(
+                            <Link to={'/home/artist/'+artist.authorId}>{artist.pseudonym + ", "}</Link>
                         ))}</div>
                     </div>
                 </div>

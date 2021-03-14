@@ -1,6 +1,7 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 const SearchItemLists = (props) =>{
 
@@ -17,7 +18,7 @@ const SearchItemLists = (props) =>{
                 </div>
             </div>
                 <div className="artist_name_search">
-                    <div className="artist_search_name"><b>{item.pseudonym}</b></div>
+                    <div className="artist_search_name"><Link to={'/home/artist/'+item.authorId}><b>{item.pseudonym}</b></Link></div>
                 </div>
         </div>
     ))

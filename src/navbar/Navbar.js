@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 import SearchPane from "./SearchPane";
+import AddPlaylist from "./AddPlaylist";
 
 
 const Navbar = ({logged, audioEl, music, searchValue, setSearchValue}) =>{
 
     let history = useHistory();
+
 
     function Logout(){
 
@@ -30,20 +32,24 @@ const Navbar = ({logged, audioEl, music, searchValue, setSearchValue}) =>{
         history.push("/login");
     }
 
+    function handleAddPlaylist(){
+        document.getElementById("create-playlist").style.display="block"
+    }
+
     return  <nav className="navbar">
                 <div className="navbar-container">
                     <div className="navbar-left">
                         <h1>Song<span className={'book-color'}>Book</span></h1>
                     </div>
                     <div className="navbar-center">
-                        <a href="">Add Song</a>
+                        <p style={{cursor:"pointer"}} onClick={()=>handleAddPlaylist()}>Create playlist</p>
                         <a href="">Most popular songs</a>
-                        <a href="">Most popular albums</a>
                         <a href="" onClick={()=>
                             logged==="Login" ? Login() : Logout()}
                         >{logged}</a>
                     </div>
                     <SearchPane searchValue={searchValue} setSearchValue={setSearchValue}/>
+                    <AddPlaylist/>
                 </div>
             </nav>
 }
