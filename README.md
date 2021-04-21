@@ -1,5 +1,12 @@
 Description, <br>
 Its mine first solo React app. 
+This app is still on progress, but i it's some screens from this app version. 
+
+You can check this app version at https://react-song-book.herokuapp.com/
+You can listen some music, but some features are still not avaible.
+
+![FireShot Capture 033 - React App - localhost](https://user-images.githubusercontent.com/59396785/115530931-82e77b00-a294-11eb-9556-213895d10814.png)
+
 
 
 # Getting Started with Create React App
